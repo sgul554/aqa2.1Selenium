@@ -44,7 +44,7 @@ public class SeleniumTest {
         WebElement findElement = driver.findElement(By.cssSelector("[data-test-id]"));
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Ярослав Гуляев");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79265432111");
-        driver.findElement(By.cssSelector("[data-test-id=agreement] input")).click();
+        driver.findElement(By.className("checkbox__box")).click();
         driver.findElement(By.cssSelector("button")).click();
         String text = driver.findElement(By.cssSelector("[data-test-id=order-success] input")).getText();
         assertEquals("Ваша заявка успешно отправлена!",text.trim());
