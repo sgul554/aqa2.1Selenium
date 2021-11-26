@@ -15,4 +15,4 @@ install:
 
 build_script:
 
-  - ./gradlew test -Dselenide.headless=true # будем передавать этот параметр в JVM (где его подтянет Selenide)
+  - ./gradlew test --info
