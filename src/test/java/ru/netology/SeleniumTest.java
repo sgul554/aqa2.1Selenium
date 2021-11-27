@@ -6,11 +6,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import static io.github.bonigarcia.wdm.WebDriverManager.chromedriver;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -39,15 +39,15 @@ public class SeleniumTest {
     }
 
     @Test
-    void shouldSendRequestToTheCardTest() {
+    void shouldSendRequestToTheCardTest() throws InterruptedException {
         driver.get("http://localhost:9999");
-        WebElement findElement = driver.findElement(By.cssSelector("[data-test-id]"));
-        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Ярослав Гуляев");
-        driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79265432111");
+
+        driver.findElement(By.cssSelector("[data-test-id=name]")).sendKeys("Ярослав Гуляев");
+        driver.findElement(By.cssSelector("[data-test-id=phone]")).sendKeys("+79265432111");
         driver.findElement(By.className("checkbox__box")).click();
         driver.findElement(By.cssSelector("button")).click();
-        String text = driver.findElement(By.cssSelector("[data-test-id=order-success] input")).getText();
-        assertEquals("Ваша заявка успешно отправлена!",text.trim());
+        String text = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText();
+        assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.",text.trim());
 
     }
 
